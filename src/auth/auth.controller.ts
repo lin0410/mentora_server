@@ -51,12 +51,11 @@ export class AuthController {
     }
   }
 
-  // @UseGuard(AuthGuard)
+  // @UseGuards(AuthGuard)
   @Post('login')
   async login(@Body() dto: loginDto) {
     return await this.authService.login(dto);
   }
-
   @UseGuards(refreshJwtGuard)
   @Post('refresh')
   async refreshToken(@Request() req) {

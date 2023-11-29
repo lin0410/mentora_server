@@ -6,6 +6,7 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { PrismaService } from './prisma.service';
 import { MulterModule } from '@nestjs/platform-express';
+import { ChatsModule } from './chats/chats.module';
 
 @Module({
   imports: [
@@ -16,8 +17,11 @@ import { MulterModule } from '@nestjs/platform-express';
       dest: './files',
       storage: 'diskStorage',
     }),
+    ChatsModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
-export class AppModule {}
+export class AppModule {
+  static port: any;
+}
